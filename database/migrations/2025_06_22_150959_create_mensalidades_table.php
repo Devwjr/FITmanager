@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('mensalidades', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('aluno_id');
+            $table->decimal('valor', 10, 2);
+            $table->enum('status', ['pendente', 'pago', 'atrasado'])->default('pendente');
+            $table->date('vencimento');
+            $table->date('pagamento_em')->nullable();
             $table->timestamps();
+
+            $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
         });
     }
 

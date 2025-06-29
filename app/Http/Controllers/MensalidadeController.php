@@ -1,64 +1,52 @@
 <?php
 
+// app/Http/Controllers/MensalidadeController.php
 namespace App\Http\Controllers;
 
+use App\Models\Mensalidade;
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class MensalidadeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $mensalidades = Mensalidade::with('aluno')->orderBy('vencimento', 'asc')->get();
+        return view('mensalidades.index', compact('mensalidades'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function pagar($id)
+    {
+        $mensalidade = Mensalidade::findOrFail($id);
+        $mensalidade->update([
+            'status' => 'pago',
+            'pagamento_em' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Mensalidade marcada como paga.');
+    }
+
     public function create()
     {
-        //
+        $alunos = Aluno::all();
+        return view('mensalidades.create', compact('alunos'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'aluno_id' => 'required|exists:alunos,id',
+            'valor' => 'required|numeric',
+            'vencimento' => 'required|date',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        Mensalidade::create([
+            'aluno_id' => $request->aluno_id,
+            'valor' => $request->valor,
+            'vencimento' => $request->vencimento,
+            'status' => 'pendente',
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('mensalidades.index')->with('success', 'Mensalidade criada com sucesso.');
     }
 }

@@ -6,6 +6,15 @@ use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\DietaController;
 use App\Http\Controllers\EvolucaoController;
+use App\Http\Controllers\MensalidadeController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/mensalidades', [MensalidadeController::class, 'index'])->name('mensalidades.index');
+    Route::get('/mensalidades/create', [MensalidadeController::class, 'create'])->name('mensalidades.create');
+    Route::post('/mensalidades/store', [MensalidadeController::class, 'store'])->name('mensalidades.store');
+    Route::post('/mensalidades/{id}/pagar', [MensalidadeController::class, 'pagar'])->name('mensalidades.pagar');
+});
+
 
 Route::get('/evolucoes', [EvolucaoController::class, 'index'])->name('evolucoes.index');
 Route::get('/evolucoes/create', [EvolucaoController::class, 'create'])->name('evolucoes.create');
@@ -37,9 +46,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/treinos', [TreinoController::class, 'index'])->name('treinos.index');
 Route::get('/treinos/create', [TreinoController::class, 'create'])->name('treinos.create');
 Route::post('/treinos', [TreinoController::class, 'store'])->name('treinos.store');
-
-Route::middleware(['auth'])->group(function () {
-    Route::resource('mensalidades', MensalidadeController::class);
-});
 
 require __DIR__ . '/auth.php';
