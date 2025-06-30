@@ -7,7 +7,9 @@ use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\DietaController;
 use App\Http\Controllers\EvolucaoController;
 use App\Http\Controllers\MensalidadeController;
+use App\Http\Controllers\PixController;
 
+Route::get('/pagamentos/pixmanual', [PixController::class, 'gerarPix']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/mensalidades', [MensalidadeController::class, 'index'])->name('mensalidades.index');
     Route::get('/mensalidades/create', [MensalidadeController::class, 'create'])->name('mensalidades.create');
