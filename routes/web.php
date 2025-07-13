@@ -7,10 +7,18 @@ use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\DietaController;
 use App\Http\Controllers\EvolucaoController;
 use App\Http\Controllers\MensalidadeController;
-use App\Http\Controllers\PixController;
 
-Route::get('/pagamentos/pixmanual', [PixController::class, 'gerarPix']);
-Route::middleware(['auth'])->group(function () {
+
+
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/pagamento/pix/{id}', [PagamentoController::class, 'gerarPix'])->name('pagamentos.pix');
+    Route::post('/pagamento/confirmar/{id}', [PagamentoController::class, 'confirmar'])->name('pagamentos.confirmar');
+    Route::get('/recibo/{id}', [ReciboController::class, 'gerar'])->name('recibos.gerar');
+    Route::post('/presenca/entrada/{aluno_id}', [PresencaController::class, 'registrarEntrada'])->name('presenca.entrada');
+    Route::post('/presenca/saida/{aluno_id}', [PresencaController::class, 'registrarSaida'])->name('presenca.saida');
+    Route::get('/presenca/historico/{aluno_id}', [PresencaController::class, 'historico'])->name('presenca.historico');
+    Route::get('/pagamentos/pixmanual', [PixController::class, 'gerarPix']);
+    Route::middleware(['auth'])->group(function () {
     Route::get('/mensalidades', [MensalidadeController::class, 'index'])->name('mensalidades.index');
     Route::get('/mensalidades/create', [MensalidadeController::class, 'create'])->name('mensalidades.create');
     Route::post('/mensalidades/store', [MensalidadeController::class, 'store'])->name('mensalidades.store');
