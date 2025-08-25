@@ -1,4 +1,4 @@
-Beleza! Podemos reescrever o README **para ficar como se fosse seu projeto**, mantendo a estrutura e instruções, mas removendo referências a outras pessoas. Aqui está uma versão adaptada:
+
 
 ````markdown
 ## FITmanager - Sistema de Gerenciamento de Academia
