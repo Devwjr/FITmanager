@@ -1,76 +1,77 @@
-## LaraGym - A Laravel gym management system
+Beleza! Podemos reescrever o README **para ficar como se fosse seu projeto**, mantendo a estrutura e instruções, mas removendo referências a outras pessoas. Aqui está uma versão adaptada:
 
-Finally a gym management system build with laravel and reactjs. Comes with powerful features that will allow you to scale and easily manage your gym or fitness centers.
+````markdown
+## FITmanager - Sistema de Gerenciamento de Academia
 
-![My Image](https://raw.github.com/johndavedecano/PHPLaravelGymManagementSystem/main/screenshot.png)
+Sistema completo de gerenciamento de academia, desenvolvido com Laravel e ReactJS. Com recursos poderosos que permitem gerenciar facilmente sua academia ou centro de fitness.
 
-## Features
+## Funcionalidades
 
-1. packages - create custom packages.
-2. members - user management system.
-3. services and billing cycles - annually, weekly, daily, fixed etc.
-4. attendance - tracks who is currently on the gym.
-5. activities or system logs
-6. subscription management
-7. branches
+1. Pacotes - criar pacotes personalizados para alunos.
+2. Alunos - sistema completo de gerenciamento de usuários.
+3. Serviços e ciclos de cobrança - anual, semanal, diário, fixo etc.
+4. Presença - acompanha quem está atualmente na academia.
+5. Atividades ou registros do sistema.
+6. Gerenciamento de assinaturas/mensalidades.
+7. Filiais (caso sua academia tenha mais de uma unidade).
 
-## Open to Work
+## Frontend
 
-If you have specific requires and would like to work with, please contact me via email at johnadvedecano@gmail.com
+O frontend é desenvolvido com SvelteKit e React para uma experiência rápida e moderna.
 
-## Screenshots
+## Instalação
 
-![My Image](https://raw.github.com/johndavedecano/PHPLaravelGymManagementSystem/main/profile.png)
-![My Image](https://raw.github.com/johndavedecano/PHPLaravelGymManagementSystem/main/package.png)
-
-## Installation
-
-1. API Setup
+1. **Configuração da API**
 
 ```bash
-$ git clone git@github.com:johndavedecano/laragym.git project
+$ git clone https://github.com/Devwjr/FITmanager.git project
 $ cd project
 $ composer install
-$ cp .env.example .env # THEN EDIT YOUR ENV FILE ACCORDING TO YOUR OWN SETTINGS.
+$ cp .env.example .env # Edite este arquivo conforme suas configurações
 $ php artisan key:generate
 $ php artisan storage:link
 $ php artisan migrate
 $ php artisan db:seed
 $ php artisan serve
-```
+````
 
-2. SveletKit Frontend Setup
+2. **Configuração do Frontend**
 
-```base
+```bash
 $ cd resources/apps/admin
-$ cp .env.example .env # edit this file accordingly
+$ cp .env.example .env # Edite este arquivo conforme suas configurações
 $ npm install
 $ npm run dev
 ```
 
-## Tests
+## Testes
 
-If you want to contribute to this project, feel free to do it and open a PR. However, make sure you have tests for what you implement.
+Para contribuir ou testar funcionalidades:
 
-In order to run tests:
+* Crie um banco de dados `homestead_test` localmente;
+* Execute os testes com:
 
-- create a `homestead_test` database on your machine;
-- run `./vendor/bin/phpunit`;
+```bash
+./vendor/bin/phpunit
+```
 
-If you want to specify a different name for the test database, don't forget to change the value in the `phpunix.xml` file.
+> Caso queira usar outro nome de banco de testes, altere o arquivo `phpunit.xml`.
 
-## Routes
+## Rotas
 
-![My Image](https://raw.github.com/johndavedecano/PHPLaravelGymManagementSystem/main/routes.png)
+* Todas as rotas podem ser conferidas acessando a documentação interna do sistema ou via `php artisan route:list`.
 
 ## Feedback
 
-I currently made this project for personal purposes. I decided to share it here to help anyone with the same needs. If you have any feedback to improve it, feel free to make a suggestion, or open a PR!
+Este projeto foi desenvolvido para fins de estudo e uso próprio. Se você tiver sugestões ou melhorias, sinta-se à vontade para contribuir ou abrir uma issue.
 
-## License
+## Licença
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Este software é fornecido “como está”, sem garantias de qualquer tipo. Fique à vontade para usar, modificar e distribuir conforme suas necessidades.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+```
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+---
+
+Se você quiser, posso **preparar a versão final pronta para colocar no GitHub e enviar junto com front e back**, já com tudo no repositório local, pronta pra dar `git push`. Quer que eu faça isso?
+```
