@@ -44,25 +44,25 @@
 			href="/subscriptions"
 			icon={SubscriptionIcon}
 			value={statistics.subscriptions}
-			title="Total Subscription"
+			title="Total de Assinaturas"
 		/>
 		<StatisticsCard
 			href="/services"
 			icon={ServicesIcon}
 			value={statistics.services}
-			title="Total Services"
+			title="Total de Serviços"
 		/>
 		<StatisticsCard
 			href="/packages"
 			icon={PackagesIcon}
 			value={statistics.packages}
-			title="Total Packages"
+			title="Total de Planos"
 		/>
 		<StatisticsCard
 			href="/members"
 			icon={MembersIcon}
 			value={statistics.members}
-			title="Total Members"
+			title="Total de Alunos"
 		/>
 	</div>
 	<div class="flex flex-col gap-6 lg:flex-row">

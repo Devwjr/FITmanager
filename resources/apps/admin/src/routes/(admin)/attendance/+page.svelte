@@ -9,19 +9,19 @@
 
 	const store = getAttendanceStoreContext();
 
-	let title = 'Member Attedance';
+	let titulo = 'Presença de Membros';
 
-	const onAmountChanged = (event) => {
+	const aoAlterarQuantidade = (event) => {
 		store.perPage = event.detail;
 		store.loadItems();
 	};
 
-	const onPageChanged = (event) => {
+	const aoAlterarPagina = (event) => {
 		store.currentPage = event.detail;
 		store.loadItems();
 	};
 
-	let paginationSettings = $state({
+	let configuracaoPaginacao = $state({
 		page: 0,
 		limit: 15,
 		size: 0,
@@ -29,34 +29,34 @@
 	});
 
 	$effect(() => {
-		paginationSettings.currentPage = store.currentPage - 1;
-		paginationSettings.perPage = store.perPage;
-		paginationSettings.size = store.totalItems;
+		configuracaoPaginacao.currentPage = store.currentPage - 1;
+		configuracaoPaginacao.perPage = store.perPage;
+		configuracaoPaginacao.size = store.totalItems;
 	});
 
 	onMount(() => store.loadItems());
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>{titulo}</title>
 </svelte:head>
 
 <div class="p-4 lg:p-6">
 	<div class="card bg-white p-4 lg:p-6">
 		<header class="card-header mb-6 flex items-center">
-			<h3 class="h3">{title}</h3>
+			<h3 class="h3">{titulo}</h3>
 			<div class="flex-1"></div>
 		</header>
-		<!-- Responsive Container (recommended) -->
+		<!-- Container Responsivo (recomendado) -->
 		<div class="table-container">
-			<!-- Native Table Element -->
+			<!-- Elemento de Tabela Nativo -->
 			<table class="table-hover table bg-white">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Member</th>
-						<th>Description</th>
-						<th>Date</th>
+						<th>Membro</th>
+						<th>Descrição</th>
+						<th>Data</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -93,11 +93,11 @@
 			</table>
 			<div class="pt-6">
 				<Paginator
-					bind:settings={paginationSettings}
+					bind:settings={configuracaoPaginacao}
 					showNumerals
 					maxNumerals={1}
-					on:amount={onAmountChanged}
-					on:page={onPageChanged}
+					on:amount={aoAlterarQuantidade}
+					on:page={aoAlterarPagina}
 				/>
 			</div>
 		</div>
