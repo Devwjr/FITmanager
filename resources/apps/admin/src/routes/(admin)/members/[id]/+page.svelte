@@ -132,7 +132,7 @@
 	</div>
 </div>
 
-<style lang="postcss">
+< lang="postcss">
 	.user-sidebar {
 		@apply min-h-full w-72 border-r;
 	}
@@ -148,4 +148,4 @@
 	.user-nav a:hover {
 		@apply text-white;
 	}
-</style>
+/style>
