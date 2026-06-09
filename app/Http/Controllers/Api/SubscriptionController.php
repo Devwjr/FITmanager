@@ -9,6 +9,7 @@ use App\Models\Package;
 use App\Models\Subscription;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -17,7 +18,7 @@ class SubscriptionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -50,8 +51,7 @@ class SubscriptionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSubscriptionRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StoreSubscriptionRequest $request)
     {
@@ -72,8 +72,7 @@ class SubscriptionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subscription  $subscription
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Subscription $subscription)
     {
@@ -85,9 +84,7 @@ class SubscriptionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSubscriptionRequest  $request
-     * @param  \App\Models\Subscription  $subscription
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateSubscriptionRequest $request, Subscription $subscription)
     {
@@ -122,8 +119,7 @@ class SubscriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subscription  $subscription
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Subscription $subscription)
     {

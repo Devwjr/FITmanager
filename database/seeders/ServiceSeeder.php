@@ -1,8 +1,9 @@
 <?php
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Service;
+use Illuminate\Database\Seeder;
 
 class ServiceSeeder extends Seeder
 {
@@ -24,7 +25,7 @@ class ServiceSeeder extends Seeder
         Service::create([
             'id' => 2,
             'name' => 'Yoga',
-            'description' => ''
+            'description' => '',
         ]);
 
         Service::create([
@@ -36,7 +37,7 @@ class ServiceSeeder extends Seeder
         Service::create([
             'id' => 4,
             'name' => 'Muai Thai',
-            'description' => ''
+            'description' => '',
         ]);
     }
 }

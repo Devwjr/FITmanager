@@ -16,7 +16,7 @@ class PackageUpdateTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->put('/api/packages/1', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -28,9 +28,9 @@ class PackageUpdateTest extends TestCase
 
         $bearer = $this->getUserAuth();
 
-        $response = $this->put('/api/packages/' . $model->id, [], [
+        $response = $this->put('/api/packages/'.$model->id, [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -42,11 +42,11 @@ class PackageUpdateTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->put('/api/packages/' . $model->id, [
-            'name' => ''
+        $response = $this->put('/api/packages/'.$model->id, [
+            'name' => '',
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(422);
@@ -60,7 +60,7 @@ class PackageUpdateTest extends TestCase
 
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(404);
@@ -75,15 +75,15 @@ class PackageUpdateTest extends TestCase
         $service = Service::factory()->create();
         $cycle = Cycle::factory()->create();
 
-        $response = $this->put('/api/packages/' . $model->id, [
+        $response = $this->put('/api/packages/'.$model->id, [
             'cycle_id' => $cycle->id,
             'services' => [$service->id],
             'amount' => 1,
             'name' => fake()->name(),
-            'status' => 'active'
+            'status' => 'active',
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

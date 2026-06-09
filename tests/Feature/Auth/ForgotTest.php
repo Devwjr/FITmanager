@@ -19,7 +19,7 @@ class ForgotTest extends TestCase
     public function test_validation_error()
     {
         $response = $this->post('/api/auth/forgot', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(422);
@@ -30,7 +30,7 @@ class ForgotTest extends TestCase
         $response = $this->post('/api/auth/forgot', [
             'email' => 'test@test.com',
         ], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(400);
@@ -43,7 +43,7 @@ class ForgotTest extends TestCase
         $response = $this->post('/api/auth/forgot', [
             'email' => $user->email,
         ], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(200)->assertJson(function (AssertableJson $json) {

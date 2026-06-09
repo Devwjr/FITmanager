@@ -16,7 +16,7 @@ class StatsControllerTest extends TestCase
 
         $response = $this->get('/api/stats/subscriptions', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);
@@ -28,7 +28,7 @@ class StatsControllerTest extends TestCase
 
         $response = $this->get('/api/stats/services', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);
@@ -40,7 +40,7 @@ class StatsControllerTest extends TestCase
 
         $response = $this->get('/api/stats/members', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);
@@ -52,7 +52,7 @@ class StatsControllerTest extends TestCase
 
         $response = $this->get('/api/stats/packages', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

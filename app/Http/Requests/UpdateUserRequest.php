@@ -27,7 +27,7 @@ class UpdateUserRequest extends FormRequest
             'email' => 'email',
             'name' => 'string',
             'password' => 'string|min:5|max:20',
-            'password_confirmation' => 'string|min:5|max:20|same:password'
+            'password_confirmation' => 'string|min:5|max:20|same:password',
         ];
     }
 }

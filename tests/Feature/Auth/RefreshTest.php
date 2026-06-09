@@ -14,7 +14,7 @@ class RefreshTest extends TestCase
     {
         $response = $this->post('/api/auth/refresh', [], [
             'Accept' => 'application/json',
-            'Authorization' => "Bearer"
+            'Authorization' => 'Bearer',
         ]);
 
         $response->assertStatus(401);
@@ -28,7 +28,7 @@ class RefreshTest extends TestCase
 
         $response = $this->post('/api/auth/refresh', [], [
             'Accept' => 'application/json',
-            'Authorization' => "Bearer $token"
+            'Authorization' => "Bearer $token",
         ]);
 
         $response->assertStatus(200);

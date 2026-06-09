@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
 use App\Models\Branch;
+use Illuminate\Http\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -14,7 +15,7 @@ class BranchController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -32,8 +33,7 @@ class BranchController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBranchRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StoreBranchRequest $request)
     {
@@ -49,8 +49,7 @@ class BranchController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Branch $branch
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Branch $branch)
     {
@@ -60,9 +59,7 @@ class BranchController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBranchRequest $request
-     * @param  \App\Models\Branch $branch
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateBranchRequest $request, Branch $branch)
     {
@@ -78,8 +75,7 @@ class BranchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Branch $branch
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Branch $branch)
     {

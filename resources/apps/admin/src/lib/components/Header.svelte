@@ -6,12 +6,12 @@
 	const drawerOpen = () => drawerStore.open({});
 </script>
 
-<AppBar background="bg-blue-950">
+<AppBar background="bg-gradient-to-r from-amber-600 to-amber-500">
 	<svelte:fragment slot="lead">
-		<div class="flex items-center to-blue-950">
+		<div class="flex items-center">
 			<button
 				class="btn btn-sm mr-4 lg:hidden"
-				aria-label="Toggle Drawer"
+				aria-label="Abrir Menu"
 				onclick={drawerOpen}
 			>
 				<span>
@@ -22,7 +22,7 @@
 					</svg>
 				</span>
 			</button>
-			<strong class="text-xl text-white">laragym</strong>
+			<strong class="text-xl text-white">FITmanager</strong>
 		</div>
 	</svelte:fragment>
 </AppBar>

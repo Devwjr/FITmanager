@@ -1,8 +1,9 @@
 <?php
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Cycle;
+use Illuminate\Database\Seeder;
 
 class CycleSeeder extends Seeder
 {

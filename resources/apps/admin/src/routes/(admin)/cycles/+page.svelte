@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import { goto } from '$app/navigation';
 	import { getBearerToken, useApi } from '$lib/api';
 	import { Paginator } from '@skeletonlabs/skeleton';
@@ -22,10 +21,10 @@
 		amounts: [5, 10, 15, 20, 40, 60, 100]
 	});
 
-	let title = 'Manage Billing Cycles';
+	let title = 'Gerenciar Ciclos';
 
 	const onDelete = (id) => {
-		const confirm = window.confirm('are you sure you wanna delete this item?');
+		const confirm = window.confirm('Tem certeza que deseja excluir este item?');
 		if (confirm) {
 			items = items.filter((v) => v.id != id);
 			paginationSettings.size = paginationSettings.size - 1;
@@ -68,20 +67,18 @@
 				class="btn variant-filled-primary text-white"
 				onclick={() => goto('/cycles/new')}
 			>
-				Add Item
+				Adicionar
 			</button>
 		</header>
-		<!-- Responsive Container (recommended) -->
 		<div class="table-container">
-			<!-- Native Table Element -->
 			<table class="table-hover table bg-white">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Name</th>
-						<th>Num Days</th>
+						<th>Nome</th>
+						<th>Dias</th>
 						<th>Status</th>
-						<th>Action</th>
+						<th>Ação</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -120,7 +117,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<th colspan="3" class="bg-white">Results Found {paginationSettings.size}</th
+						<th colspan="3" class="bg-white">Resultados encontrados: {paginationSettings.size}</th
 						>
 						<td class="bg-white"></td>
 					</tr>

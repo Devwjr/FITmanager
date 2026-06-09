@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePackageRequest;
 use App\Http\Requests\UpdatePackageRequest;
 use App\Models\Package;
+use Illuminate\Http\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -14,7 +15,7 @@ class PackageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -34,8 +35,7 @@ class PackageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePackageRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StorePackageRequest $request)
     {
@@ -56,8 +56,7 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Package $package
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Package $package)
     {
@@ -69,9 +68,7 @@ class PackageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePackageRequest  $request
-     * @param  \App\Models\Package $package
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdatePackageRequest $request, Package $package)
     {
@@ -94,8 +91,7 @@ class PackageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Package  $package
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Package $package)
     {

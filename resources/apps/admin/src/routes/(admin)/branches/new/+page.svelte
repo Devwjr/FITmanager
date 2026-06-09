@@ -1,6 +1,4 @@
 <script>
-	// @ts-nocheck
-
 	import { goto } from '$app/navigation';
 	import { getErrorMessage } from '$lib/api';
 	import { createBranchStoreContext } from '$lib/stores/branches.store.svelte';
@@ -8,7 +6,7 @@
 
 	const toast = useToast();
 
-	const title = 'Add Branch';
+	const title = 'Nova Filial';
 
 	const store = createBranchStoreContext();
 
@@ -28,7 +26,7 @@
 			.then(() => {
 				goto('/branches');
 				toast.trigger({
-					message: 'Successfully created',
+					message: 'Criado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -52,11 +50,10 @@
 			<h3 class="h3">{title}</h3>
 			<div class="flex-1"></div>
 		</header>
-		<!-- Responsive Container (recommended) -->
 		<form action="" onsubmit={onSubmit}>
 			<div class="mb-4">
 				<label class="label">
-					<span>Name</span>
+					<span>Nome</span>
 					<input
 						class="input"
 						bind:value={fields.name}
@@ -79,15 +76,15 @@
 						disabled={loading}
 					>
 						<option value=""></option>
-						<option value="active">Active</option>
-						<option value="inactive">In-Active</option>
+						<option value="active">Ativo</option>
+						<option value="inactive">Inativo</option>
 					</select>
 				</label>
 			</div>
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Description</span>
+					<span>Descrição</span>
 					<textarea
 						class="textarea"
 						rows="4"
@@ -104,13 +101,13 @@
 					type="button"
 					onclick={() => goto('/branches')}
 					class="variant-filled-error btn text-white"
-					disabled={loading}>Cancel</button
+					disabled={loading}>Cancelar</button
 				>
 				<div class="flex-1"></div>
 				<button
 					type="submit"
 					class="variant-filled-primary btn mr-2 text-white"
-					disabled={loading}>Submit</button
+					disabled={loading}>Salvar</button
 				>
 			</div>
 		</form>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Dave
@@ -8,13 +9,13 @@
 
 namespace App\Http\Controllers\Api;
 
-
 use App\CacheKey;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\Service;
 use App\Models\Subscription;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 
 class StatisticsController extends Controller
@@ -41,7 +42,7 @@ class StatisticsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function members()
     {
@@ -53,7 +54,7 @@ class StatisticsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function subscriptions()
     {

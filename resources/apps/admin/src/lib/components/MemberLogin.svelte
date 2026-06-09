@@ -63,9 +63,9 @@
 			let description;
 
 			if (type === 'login') {
-				description = `User ${user.id} : ${user.name} has logged in`;
+				description = `Aluno ${user.id} : ${user.name} fez login`;
 			} else if (type === 'logout') {
-				description = `User ${user.id} : ${user.name} has logged out`;
+				description = `Aluno ${user.id} : ${user.name} fez logout`;
 			}
 
 			await api.post('/activities', {
@@ -96,20 +96,20 @@
 
 <div class="card flex-1 flex-col bg-white shadow-lg lg:flex-row">
 	<div class="card-header border-b p-4">
-		<div class="flex-1 font-bold">Member Login</div>
+		<div class="flex-1 font-bold">Login do Aluno</div>
 	</div>
 	<div class="card-body p-4">
-		<p class="mb-2 block">Please search for a member to get started.</p>
+		<p class="mb-2 block">Pesquise por um aluno para começar.</p>
 		<UserSelect
 			searchable
 			clearable
 			bind:value={user}
-			placeholder="Search Member"
+			placeholder="Pesquisar Aluno"
 			onChange={onChangeUser}
 		/>
 		{#if user}
 			<div class="pt-4">
-				<div class="mb-4 mt-6 flex-1 font-bold">Member Information</div>
+				<div class="mb-4 mt-6 flex-1 font-bold">Informações do Aluno</div>
 				<div class="card mb-6 w-full bg-white shadow-lg">
 					<div class="card-body p-4">
 						<div class="flex items-center gap-4">
@@ -131,12 +131,12 @@
 							</div>
 							<div class="flex-1"></div>
 							<a href={`/members/${user.id}`} class="variant-filled btn btn-sm">
-								View Profile
+								Ver Perfil
 							</a>
 						</div>
 					</div>
 				</div>
-				<div class="mb-4 flex-1 font-bold">Member Subscriptions</div>
+				<div class="mb-4 flex-1 font-bold">Assinaturas do Aluno</div>
 				<div class="grid grid-cols-1 gap-2">
 					{#if subscriptions.length}
 						<div class="mb-4">
@@ -148,13 +148,13 @@
 						<div class="card mb-4 w-full bg-white shadow-lg">
 							<div class="card-body p-4">
 								<div class="text-center text-xs text-gray-500">
-									This member does not have any subscriptions
+									Este aluno não possui assinaturas
 								</div>
 							</div>
 						</div>
 					{/if}
 				</div>
-				<div class="mb-4 flex-1 font-bold">Member Branches</div>
+				<div class="mb-4 flex-1 font-bold">Filiais do Aluno</div>
 				<div class="card w-full bg-white shadow-lg">
 					<div class="card-body p-4">
 						{#if branches.length}
@@ -165,7 +165,7 @@
 							</ul>
 						{:else}
 							<div class="text-center text-xs text-gray-500">
-								This member does not have any branches
+								Este aluno não possui filiais
 							</div>
 						{/if}
 					</div>
@@ -177,10 +177,10 @@
 		<div class="flex items-center border-t p-4">
 			<form class="flex flex-1 items-center gap-4" onsubmit={onLogActivity}>
 				<select class="select" bind:value={type} name="type" required>
-					<option value="login">Member Login</option>
-					<option value="logout">Member Logout</option>
+					<option value="login">Entrada</option>
+					<option value="logout">Saída</option>
 				</select>
-				<button class="variant-filled btn"> Log Status </button>
+				<button class="variant-filled btn"> Registrar </button>
 			</form>
 		</div>
 	{/if}

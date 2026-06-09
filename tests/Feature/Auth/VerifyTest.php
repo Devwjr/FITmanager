@@ -19,7 +19,7 @@ class VerifyTest extends TestCase
     public function test_invalid_verification_hash()
     {
         $response = $this->post('/api/auth/verify/1/test', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(400);
@@ -30,11 +30,11 @@ class VerifyTest extends TestCase
         $verificationUrl = url()->temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(60),
-            ['id' => 1000, 'hash' => sha1("test@test.com")]
+            ['id' => 1000, 'hash' => sha1('test@test.com')]
         );
 
         $response = $this->post($verificationUrl, [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(404);
@@ -51,7 +51,7 @@ class VerifyTest extends TestCase
         );
 
         $response = $this->post($verificationUrl, [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(200)->assertJson(function (AssertableJson $json) {

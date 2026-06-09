@@ -37,47 +37,47 @@
 			},
 			{
 				path: '/activities',
-				name: 'Activities',
+				name: 'Atividades',
 				icon: Activities
 			},
 			{
 				path: '/attendance',
-				name: 'Attendance',
+				name: 'Presença',
 				icon: Attendance
 			},
 			{
 				path: '/members',
-				name: 'Members',
+				name: 'Alunos',
 				icon: Members
 			},
 			{
 				path: '/branches',
-				name: 'Branches',
+				name: 'Filiais',
 				icon: Branches
 			},
 			{
 				path: '/subscriptions',
-				name: 'Subscriptions',
+				name: 'Assinaturas',
 				icon: Subscriptions
 			},
 			{
 				path: '/packages',
-				name: 'Packages',
+				name: 'Pacotes',
 				icon: Packages
 			},
 			{
 				path: '/services',
-				name: 'Services',
+				name: 'Serviços',
 				icon: Services
 			},
 			{
 				path: '/cycles',
-				name: 'Cycles',
+				name: 'Ciclos',
 				icon: Cycles
 			},
 			{
 				path: '/logout',
-				name: 'Logout',
+				name: 'Sair',
 				icon: Logout
 			}
 		].map((v) => {
@@ -113,7 +113,7 @@
 	}
 
 	a.active {
-		@apply bg-blue-900;
+		@apply bg-amber-600;
 	}
 
 	a:focus {

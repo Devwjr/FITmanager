@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import { goto } from '$app/navigation';
 	import { getBearerToken, useApi } from '$lib/api';
 	import { Paginator } from '@skeletonlabs/skeleton';
@@ -14,7 +13,7 @@
 		Authorization: getBearerToken()
 	});
 
-	const title = 'Manage Subscriptions';
+	const title = 'Gerenciar Assinaturas';
 
 	let items = $state([]);
 	let loading = $state(false);
@@ -27,7 +26,7 @@
 	});
 
 	const onDelete = (id) => {
-		const confirm = window.confirm('are you sure you wanna delete this item?');
+		const confirm = window.confirm('Tem certeza que deseja excluir este item?');
 		if (confirm) {
 			items = items.filter((v) => v.id != id);
 			paginationSettings.size = paginationSettings.size - 1;
@@ -70,23 +69,21 @@
 				class="btn variant-filled-primary text-white"
 				onclick={() => goto('/subscriptions/new')}
 			>
-				Add Item
+				Adicionar
 			</button>
 		</header>
-		<!-- Responsive Container (recommended) -->
 		<div class="table-container">
-			<!-- Native Table Element -->
 			<table class="table-hover table bg-white">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Name</th>
-						<th>Expires At</th>
-						<th>Billing Cycle</th>
-						<th>Services</th>
-						<th>Amount Paid</th>
+						<th>Nome</th>
+						<th>Expira em</th>
+						<th>Ciclo</th>
+						<th>Serviços</th>
+						<th>Valor Pago</th>
 						<th>Status</th>
-						<th>Action</th>
+						<th>Ação</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -138,7 +135,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<th colspan="3" class="bg-white">Results Found {paginationSettings.size}</th
+						<th colspan="3" class="bg-white">Resultados encontrados: {paginationSettings.size}</th
 						>
 						<td class="bg-white"></td>
 					</tr>

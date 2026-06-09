@@ -28,7 +28,7 @@ class StorePackageRequest extends FormRequest
             'cycle_id' => 'required|integer|exists:cycles,id',
             'amount' => 'required|numeric',
             'name' => 'required|string|max:255',
-            'status' => 'required|string|in:active,inactive,deleted'
+            'status' => 'required|string|in:active,inactive,deleted',
         ];
     }
 }

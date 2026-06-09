@@ -1,8 +1,10 @@
 <?php
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Constants;
 use App\Models\Activity;
+use Illuminate\Database\Seeder;
 
 class ActivitySeeder extends Seeder
 {
@@ -18,8 +20,8 @@ class ActivitySeeder extends Seeder
         foreach (range(0, 10) as $key) {
             Activity::create([
                 'entity_id' => 1,
-                'type' => \App\Constants::ACTIVITY_ATTENDANCE,
-                'description' => 'login'
+                'type' => Constants::ACTIVITY_ATTENDANCE,
+                'description' => 'login',
             ]);
         }
     }

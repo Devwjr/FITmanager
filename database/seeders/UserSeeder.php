@@ -1,8 +1,9 @@
 <?php
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
@@ -22,9 +23,8 @@ class UserSeeder extends Seeder
             'is_admin' => true,
             'password' => bcrypt('password'),
             'account_number' => fake()->randomDigit(),
-            'avatar' => fake()->imageUrl(50, 50, 'people')
+            'avatar' => fake()->imageUrl(50, 50, 'people'),
         ]);
-
 
         User::factory(24)->create(['is_admin' => false]);
     }

@@ -48,7 +48,7 @@
 
 <div class="card flex-1 flex-col bg-white shadow-lg lg:flex-row">
 	<div class="card-header border-b p-4">
-		<div class="flex-1 font-bold">Latest Activities</div>
+		<div class="flex-1 font-bold">Últimas Atividades</div>
 	</div>
 	<div class="card-body p-4">
 		<!-- Responsive Container (recommended) -->
@@ -59,8 +59,8 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Description</th>
-							<th>Date</th>
+							<th>Descrição</th>
+							<th>Data</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -79,7 +79,7 @@
 				</table>
 			</div>
 		{:else}
-			<div class="w-full border bg-gray-100 p-6 text-center font-bold">No items found</div>
+			<div class="w-full border bg-gray-100 p-6 text-center font-bold">Nenhum item encontrado</div>
 		{/if}
 	</div>
 </div>

@@ -10,7 +10,7 @@
 		Authorization: getBearerToken()
 	});
 
-	let title = 'Add Billing Cycle';
+	let title = 'Novo Ciclo';
 
 	let loading = false;
 
@@ -27,7 +27,7 @@
 			.then(() => {
 				goto('/cycles');
 				toast.trigger({
-					message: 'Successfully created',
+					message: 'Criado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -51,11 +51,10 @@
 			<h3 class="h3">{title}</h3>
 			<div class="flex-1"></div>
 		</header>
-		<!-- Responsive Container (recommended) -->
 		<form action="" onsubmit={prevent(onSubmit)}>
 			<div class="mb-4">
 				<label class="label">
-					<span>Name</span>
+					<span>Nome</span>
 					<input
 						class="input"
 						bind:value={fields.name}
@@ -69,7 +68,7 @@
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Number Days</span>
+					<span>Dias</span>
 					<input
 						class="input"
 						bind:value={fields.num_days}
@@ -92,15 +91,15 @@
 						disabled={loading}
 					>
 						<option value=""></option>
-						<option value="active">Active</option>
-						<option value="inactive">In-Active</option>
+						<option value="active">Ativo</option>
+						<option value="inactive">Inativo</option>
 					</select>
 				</label>
 			</div>
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Description</span>
+					<span>Descrição</span>
 					<textarea
 						class="textarea"
 						rows="4"
@@ -117,13 +116,13 @@
 					type="button"
 					onclick={() => goto('/cycles')}
 					class="btn variant-filled-error text-white"
-					disabled={loading}>Cancel</button
+					disabled={loading}>Cancelar</button
 				>
 				<div class="flex-1"></div>
 				<button
 					type="submit"
 					class="btn variant-filled-primary mr-2 text-white"
-					disabled={loading}>Submit</button
+					disabled={loading}>Salvar</button
 				>
 			</div>
 		</form>

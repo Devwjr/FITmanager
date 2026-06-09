@@ -3,10 +3,10 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
+use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
-use Illuminate\Auth\Passwords\PasswordBroker;
 
 class ResetTest extends TestCase
 {
@@ -20,7 +20,7 @@ class ResetTest extends TestCase
     public function test_validation_error()
     {
         $response = $this->post('/api/auth/reset', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(422);
@@ -32,9 +32,9 @@ class ResetTest extends TestCase
             'email' => 'test@test.com',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'token' => 'test'
+            'token' => 'test',
         ], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(400);
@@ -50,9 +50,9 @@ class ResetTest extends TestCase
             'email' => $user->email,
             'password' => 'password',
             'password_confirmation' => 'password',
-            'token' => $token
+            'token' => $token,
         ], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(200)->assertJson(function (AssertableJson $json) {

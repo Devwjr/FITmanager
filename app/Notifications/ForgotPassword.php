@@ -2,8 +2,8 @@
 
 namespace App\Notifications;
 
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class ForgotPassword extends Notification
 {
@@ -40,15 +40,15 @@ class ForgotPassword extends Notification
      * Build the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {
-        $url = url(config('app.spa_url') . '/reset?token=' . $this->token . '&email=' . $notifiable->email);
+        $url = url(config('app.spa_url').'/reset?token='.$this->token.'&email='.$notifiable->email);
 
         return (new MailMessage)
-            ->line('You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', $url)
-            ->line('If you did not request a password reset, no further action is required.');
+            ->line('Você está recebendo este e-mail porque recebemos uma solicitação de redefinição de senha para sua conta.')
+            ->action('Redefinir Senha', $url)
+            ->line('Se você não solicitou uma redefinição de senha, nenhuma ação adicional é necessária.');
     }
 }

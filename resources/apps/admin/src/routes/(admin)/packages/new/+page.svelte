@@ -1,6 +1,4 @@
 <script>
-	// @ts-nocheck
-
 	import { goto } from '$app/navigation';
 	import { getBearerToken, getErrorMessage, useApi } from '$lib/api';
 	import CycleSelect from '$lib/components/CycleSelect.svelte';
@@ -14,7 +12,7 @@
 		Authorization: getBearerToken()
 	});
 
-	let title = 'New Package';
+	let title = 'Novo Pacote';
 
 	let loading = false;
 
@@ -38,7 +36,7 @@
 			.then(() => {
 				goto('/packages');
 				toast.trigger({
-					message: 'Successfully created',
+					message: 'Criado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -62,11 +60,10 @@
 			<h3 class="h3">{title}</h3>
 			<div class="flex-1"></div>
 		</header>
-		<!-- Responsive Container (recommended) -->
 		<form action="" onsubmit={prevent(onSubmit)}>
 			<div class="mb-4">
 				<label class="label">
-					<span>Name</span>
+					<span>Nome</span>
 					<input
 						class="input"
 						bind:value={fields.name}
@@ -80,7 +77,7 @@
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Amount</span>
+					<span>Valor</span>
 					<input
 						class="input"
 						bind:value={fields.amount}
@@ -103,24 +100,22 @@
 						disabled={loading}
 					>
 						<option value=""></option>
-						<option value="active">Active</option>
-						<option value="inactive">In-Active</option>
+						<option value="active">Ativo</option>
+						<option value="inactive">Inativo</option>
 					</select>
 				</label>
 			</div>
 
 			<div class="mb-4">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
 				<label class="label flex flex-col gap-1">
-					<span>Billing Cycle</span>
+					<span>Ciclo de Cobrança</span>
 					<CycleSelect bind:value={fields.cycle} />
 				</label>
 			</div>
 
 			<div class="mb-4">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
 				<label class="label flex flex-col gap-1">
-					<span>Services</span>
+					<span>Serviços</span>
 					<ServiceSelect bind:value={fields.services} />
 				</label>
 			</div>
@@ -130,13 +125,13 @@
 					type="button"
 					onclick={() => goto('/packages')}
 					class="btn variant-filled-error text-white"
-					disabled={loading}>Cancel</button
+					disabled={loading}>Cancelar</button
 				>
 				<div class="flex-1"></div>
 				<button
 					type="submit"
 					class="btn variant-filled-primary mr-2 text-white"
-					disabled={loading}>Submit</button
+					disabled={loading}>Salvar</button
 				>
 			</div>
 		</form>

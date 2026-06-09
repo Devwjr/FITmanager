@@ -83,7 +83,7 @@
 			await api.delete(`/subscriptions/${item.id}`);
 
 			toast.trigger({
-				message: 'Subscription was successfully deleted',
+				message: 'Assinatura excluída com sucesso',
 				background: 'variant-filled-success'
 			});
 		} catch (error) {
@@ -98,8 +98,8 @@
 		const modal = {
 			type: 'confirm',
 			// Data
-			title: 'Please Confirm',
-			body: 'Are you sure you wish to proceed?',
+			title: 'Confirmação',
+			body: 'Tem certeza que deseja excluir?',
 			response: (r) => onConfirmDelete(item)
 		};
 		modalStore.trigger(modal);
@@ -108,10 +108,10 @@
 
 <div class="flex flex-col">
 	<div class="mb-4 flex items-center">
-		<h3 class="h3 mb-4">Member Subscriptions</h3>
+		<h3 class="h3 mb-4">Assinaturas do Aluno</h3>
 		<div class="flex-1"></div>
 		<a href="/" onclick={prevent(onAddSubscription)} class="variant-filled btn">
-			Add Subscription
+			Nova Assinatura
 		</a>
 	</div>
 

@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use App\Constants;
+use App\Models\Cycle;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cycle>
+ * @extends Factory<Cycle>
  */
 class ActivityFactory extends Factory
 {

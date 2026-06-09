@@ -14,7 +14,7 @@ class ActivityStoreTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->post('/api/activities', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -26,7 +26,7 @@ class ActivityStoreTest extends TestCase
 
         $response = $this->post('/api/activities', [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -38,7 +38,7 @@ class ActivityStoreTest extends TestCase
 
         $response = $this->post('/api/activities', [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(422);
@@ -54,7 +54,7 @@ class ActivityStoreTest extends TestCase
             'description' => fake()->paragraph(1),
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

@@ -3,7 +3,6 @@
 namespace Tests\Feature\Auth;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -18,7 +17,7 @@ class RegisterTest extends TestCase
     public function test_validation_error()
     {
         $response = $this->post('/api/auth/register', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(422);
@@ -30,9 +29,9 @@ class RegisterTest extends TestCase
             'email' => 'test@test.com',
             'name' => 'John Dave Decano',
             'password' => 'password',
-            'password_confirmation' => 'password'
+            'password_confirmation' => 'password',
         ], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(201);

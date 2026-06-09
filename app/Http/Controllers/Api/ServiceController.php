@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Models\Service;
+use Illuminate\Http\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -14,7 +15,7 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -32,8 +33,7 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreServiceRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StoreServiceRequest $request)
     {
@@ -49,8 +49,7 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Service $service
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Service $service)
     {
@@ -60,9 +59,7 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateServiceRequest $request
-     * @param  \App\Models\Service $service
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
@@ -78,8 +75,7 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Service $service
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Service $service)
     {

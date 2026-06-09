@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use App\Models\Package;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Service>
+ * @extends Factory<Service>
  */
 class SubscriptionFactory extends Factory
 {
@@ -22,7 +23,7 @@ class SubscriptionFactory extends Factory
             'user_id' => User::factory(),
             'package_id' => Package::factory(),
             'interval' => fake()->numberBetween(1, 10),
-            'status' => 'active'
+            'status' => 'active',
         ];
     }
 }

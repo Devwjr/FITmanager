@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\User;
 
-use App\Models\Cycle;
-use App\Models\Service;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\UserSessionTrait;
@@ -15,7 +13,7 @@ class UserStoreTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->post('/api/users', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -27,7 +25,7 @@ class UserStoreTest extends TestCase
 
         $response = $this->post('/api/users', [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -39,7 +37,7 @@ class UserStoreTest extends TestCase
 
         $response = $this->post('/api/users', [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(422);
@@ -53,10 +51,10 @@ class UserStoreTest extends TestCase
             'name' => fake()->name(),
             'email' => fake()->email(),
             'password' => 'password',
-            'password_confirmation' => 'password'
+            'password_confirmation' => 'password',
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(201);

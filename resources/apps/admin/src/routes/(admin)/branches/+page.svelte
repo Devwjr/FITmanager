@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import { goto } from '$app/navigation';
 	import { Paginator } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
@@ -11,10 +10,10 @@
 
 	const store = getBranchStoreContext();
 
-	const title = 'Manage Branches';
+	const title = 'Gerenciar Filiais';
 
 	const onDelete = (id) => {
-		const confirm = window.confirm('are you sure you wanna delete this item?');
+		const confirm = window.confirm('Tem certeza que deseja excluir este item?');
 		if (confirm) store.deleteBranch(id);
 	};
 
@@ -60,19 +59,17 @@
 				class="variant-filled-primary btn text-white"
 				onclick={() => goto('/branches/new')}
 			>
-				Add Item
+				Adicionar
 			</button>
 		</header>
-		<!-- Responsive Container (recommended) -->
 		<div class="table-container">
-			<!-- Native Table Element -->
 			<table class="table-hover table bg-white">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Name</th>
+						<th>Nome</th>
 						<th>Status</th>
-						<th>Action</th>
+						<th>Ação</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -110,7 +107,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<th colspan="3" class="bg-white">Results Found {store.totalItems}</th>
+						<th colspan="3" class="bg-white">Resultados encontrados: {store.totalItems}</th>
 						<td class="bg-white"></td>
 					</tr>
 				</tfoot>

@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<div class="stat-card-footer">
-		<a {href}>View All</a>
+		<a {href}>Ver Todos</a>
 	</div>
 </div>
 

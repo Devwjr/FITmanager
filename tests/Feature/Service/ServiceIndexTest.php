@@ -13,7 +13,7 @@ class ServiceIndexTest extends TestCase
     public function test_unauthorized()
     {
         $response = $this->get('/api/services', [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -25,7 +25,7 @@ class ServiceIndexTest extends TestCase
 
         $response = $this->get('/api/services', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -37,7 +37,7 @@ class ServiceIndexTest extends TestCase
 
         $response = $this->get('/api/services', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

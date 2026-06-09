@@ -4,7 +4,6 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
@@ -19,7 +18,7 @@ class LoginTest extends TestCase
     public function test_validation_error()
     {
         $response = $this->post('/api/auth/login', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(422);
@@ -31,7 +30,7 @@ class LoginTest extends TestCase
             'email' => 'test@test.com',
             'password' => 'password',
         ], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(422);
@@ -45,12 +44,11 @@ class LoginTest extends TestCase
             'email' => $user->email,
             'password' => 'wrongpassword',
         ], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
     }
-
 
     public function test_login_success()
     {
@@ -60,7 +58,7 @@ class LoginTest extends TestCase
             'email' => $user->email,
             'password' => 'password',
         ], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(200);

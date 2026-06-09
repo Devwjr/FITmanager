@@ -14,7 +14,7 @@ class UserDestroyTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->delete('/api/users/1', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -26,9 +26,9 @@ class UserDestroyTest extends TestCase
 
         $bearer = $this->getUserAuth();
 
-        $response = $this->delete('/api/users/' . $model->id, [], [
+        $response = $this->delete('/api/users/'.$model->id, [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -40,7 +40,7 @@ class UserDestroyTest extends TestCase
 
         $response = $this->delete('/api/users/3', [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(404);
@@ -52,9 +52,9 @@ class UserDestroyTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->delete('/api/users/' . $model->id, [], [
+        $response = $this->delete('/api/users/'.$model->id, [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(204);

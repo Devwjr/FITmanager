@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Subscription extends Model
 {
-    use HasFactory, HasService, HasCycle, HasPackage, HasUser, SoftDeletes;
+    use HasCycle, HasFactory, HasPackage, HasService, HasUser, SoftDeletes;
 
     protected $fillable = [
         'package_id',
@@ -20,6 +20,6 @@ class Subscription extends Model
         'interval',
         'expires_at',
         'suspended_at',
-        'status'
+        'status',
     ];
 }

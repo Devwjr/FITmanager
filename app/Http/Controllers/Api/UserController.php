@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Services\UserAuthService;
+use Illuminate\Http\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -16,20 +17,20 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->userAuthService = new UserAuthService();
+        $this->userAuthService = new UserAuthService;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
         $results = QueryBuilder::for(User::class)
             ->allowedFilters([
                 AllowedFilter::partial('name'),
-                AllowedFilter::partial('email')
+                AllowedFilter::partial('email'),
             ])
             ->paginate(request()->get('per_page', 15))
             ->appends(request()->query());
@@ -40,8 +41,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUserRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StoreUserRequest $request)
     {
@@ -53,8 +53,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(User $user)
     {
@@ -68,16 +67,14 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUserRequest  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateUserRequest $request, User $user)
     {
         if ($request->has('email') && $user->email != $request->email) {
             $exists = User::where('email', '=', $request->email)->exists();
             if ($exists) {
-                return response()->json(['message' => 'email must be unique'], 400);
+                return response()->json(['message' => 'e-mail deve ser único'], 400);
             }
             $user->email = $request->email;
         }
@@ -97,7 +94,7 @@ class UserController extends Controller
             'state',
             'country',
             'postcode',
-            'newsletter'
+            'newsletter',
         ];
 
         if (
@@ -110,7 +107,7 @@ class UserController extends Controller
                 'state',
                 'country',
                 'postcode',
-                'newsletter'
+                'newsletter',
             ]));
         }
 
@@ -124,13 +121,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(User $user)
     {
         if ($user->is_admin) {
-            return response()->json(['message' => 'you are not allowed to do this to yourself'], 401);
+            return response()->json(['message' => 'você não pode fazer isso a si mesmo'], 401);
         }
 
         $user->delete();

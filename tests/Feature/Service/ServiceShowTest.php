@@ -14,7 +14,7 @@ class ServiceShowTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->get('/api/services/1', [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -26,9 +26,9 @@ class ServiceShowTest extends TestCase
 
         $bearer = $this->getUserAuth();
 
-        $response = $this->get('/api/services/' . $model->id, [
+        $response = $this->get('/api/services/'.$model->id, [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -40,7 +40,7 @@ class ServiceShowTest extends TestCase
 
         $response = $this->get('/api/services/3', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(404);
@@ -52,9 +52,9 @@ class ServiceShowTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->get('/api/services/' . $model->id, [
+        $response = $this->get('/api/services/'.$model->id, [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

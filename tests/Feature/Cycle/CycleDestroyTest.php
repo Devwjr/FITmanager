@@ -14,7 +14,7 @@ class CycleDestroyTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->delete('/api/cycles/1', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -26,9 +26,9 @@ class CycleDestroyTest extends TestCase
 
         $bearer = $this->getUserAuth();
 
-        $response = $this->delete('/api/cycles/' . $model->id, [], [
+        $response = $this->delete('/api/cycles/'.$model->id, [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -40,7 +40,7 @@ class CycleDestroyTest extends TestCase
 
         $response = $this->delete('/api/cycles/3', [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(404);
@@ -52,9 +52,9 @@ class CycleDestroyTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->delete('/api/cycles/' . $model->id, [], [
+        $response = $this->delete('/api/cycles/'.$model->id, [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(204);

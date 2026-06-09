@@ -14,7 +14,7 @@ class UserUpdateTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->put('/api/users/1', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -26,9 +26,9 @@ class UserUpdateTest extends TestCase
 
         $bearer = $this->getUserAuth();
 
-        $response = $this->put('/api/users/' . $model->id, [], [
+        $response = $this->put('/api/users/'.$model->id, [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -40,11 +40,11 @@ class UserUpdateTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->put('/api/users/' . $model->id, [
-            'name' => ''
+        $response = $this->put('/api/users/'.$model->id, [
+            'name' => '',
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(422);
@@ -58,7 +58,7 @@ class UserUpdateTest extends TestCase
 
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(404);
@@ -70,11 +70,11 @@ class UserUpdateTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->put('/api/users/' . $model->id, [
+        $response = $this->put('/api/users/'.$model->id, [
             'name' => fake()->name(),
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

@@ -28,7 +28,7 @@ class UpdatePackageRequest extends FormRequest
             'cycle_id' => 'integer|exists:cycles,id',
             'amount' => 'numeric',
             'name' => 'string|max:255',
-            'status' => 'string|in:active,inactive,deleted'
+            'status' => 'string|in:active,inactive,deleted',
         ];
     }
 }

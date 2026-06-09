@@ -4,10 +4,10 @@ namespace App\Services;
 
 use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
 class UserAuthService
@@ -17,7 +17,7 @@ class UserAuthService
         $user = User::create([
             'email' => $email,
             'name' => $name,
-            'password' => bcrypt($password)
+            'password' => bcrypt($password),
         ]);
 
         event(new Registered($user));
@@ -27,8 +27,8 @@ class UserAuthService
     {
         $credentials = ['email' => $email, 'password' => $password];
 
-        if (!auth()->attempt($credentials)) {
-            throw new AuthenticationException("invalid login credentials");
+        if (! auth()->attempt($credentials)) {
+            throw new AuthenticationException('credenciais de login inválidas');
         }
 
         $user = User::where('email', $email)->firstOrFail();
@@ -56,7 +56,7 @@ class UserAuthService
             \Arr::only($arr, ['email', 'password', 'password_confirmation', 'token']),
             function (User $user, string $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
+                    'password' => Hash::make($password),
                 ])->setRememberToken(Str::random(60));
 
                 $user->save();
@@ -72,7 +72,7 @@ class UserAuthService
     {
         $user = User::findOrFail($id);
 
-        if (!$user->hasVerifiedEmail()) {
+        if (! $user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
         }
     }

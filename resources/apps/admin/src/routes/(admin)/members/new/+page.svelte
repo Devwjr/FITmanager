@@ -1,6 +1,4 @@
 <script>
-	// @ts-nocheck
-
 	import { goto } from '$app/navigation';
 	import { getErrorMessage } from '$lib/api';
 	import { getMemberStoreContext } from '$lib/stores/members.store.svelte';
@@ -10,7 +8,7 @@
 
 	const store = getMemberStoreContext();
 
-	const title = 'Add Member';
+	const title = 'Novo Aluno';
 
 	let loading = $state(false);
 
@@ -31,7 +29,7 @@
 			.then(() => {
 				goto('/members');
 				toast.trigger({
-					message: 'Successfully created',
+					message: 'Criado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -58,7 +56,7 @@
 		<form action="" onsubmit={onSubmit}>
 			<div class="mb-4">
 				<label class="label">
-					<span>Name</span>
+					<span>Nome</span>
 					<input
 						class="input"
 						bind:value={fields.name}
@@ -86,7 +84,7 @@
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Password</span>
+					<span>Senha</span>
 					<input
 						class="input"
 						bind:value={fields.password}
@@ -100,7 +98,7 @@
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Password Confirmation</span>
+					<span>Confirmar Senha</span>
 					<input
 						class="input"
 						bind:value={fields.password_confirmation}
@@ -117,13 +115,13 @@
 					type="button"
 					onclick={() => goto('/members')}
 					class="variant-filled-error btn text-white"
-					disabled={loading}>Cancel</button
+					disabled={loading}>Cancelar</button
 				>
 				<div class="flex-1"></div>
 				<button
 					type="submit"
 					class="variant-filled-primary btn mr-2 text-white"
-					disabled={loading}>Submit</button
+					disabled={loading}>Salvar</button
 				>
 			</div>
 		</form>

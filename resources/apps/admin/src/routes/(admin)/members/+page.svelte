@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import { Avatar, Paginator } from '@skeletonlabs/skeleton';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -12,10 +11,10 @@
 
 	const store = getMemberStoreContext();
 
-	const title = 'Manage Members';
+	const title = 'Gerenciar Alunos';
 
 	const onDelete = (id) => {
-		const confirm = window.confirm('are you sure you wanna delete this item?');
+		const confirm = window.confirm('Tem certeza que deseja excluir este item?');
 		if (confirm) store.deleteMember(id);
 	};
 
@@ -59,7 +58,7 @@
 				class="variant-filled-primary btn text-white"
 				onclick={() => goto('/members/new')}
 			>
-				Add Item
+				Adicionar
 			</button>
 		</header>
 		<div class="table-container">
@@ -67,9 +66,9 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Name</th>
+						<th>Nome</th>
 						<th>Status</th>
-						<th>Action</th>
+						<th>Ação</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -120,7 +119,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<th colspan="3" class="bg-white">Results Found {store.totalItems}</th>
+						<th colspan="3" class="bg-white">Resultados encontrados: {store.totalItems}</th>
 						<td class="bg-white"></td>
 					</tr>
 				</tfoot>

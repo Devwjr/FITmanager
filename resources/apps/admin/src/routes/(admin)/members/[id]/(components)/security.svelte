@@ -24,7 +24,7 @@
 		api.put(`/users/${user.id}`, fields)
 			.then(() => {
 				toast.trigger({
-					message: 'Successfully updated',
+					message: 'Atualizado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -38,13 +38,13 @@
 	};
 </script>
 
-<h3 class="h3 mb-4">Security and Privacy</h3>
+<h3 class="h3 mb-4">Segurança e Privacidade</h3>
 
 <!-- Responsive Container (recommended) -->
 <form action="" onsubmit={prevent(onSubmit)}>
 	<div class="mb-4">
 		<label class="label">
-			<span>Password</span>
+			<span>Senha</span>
 			<input
 				class="input"
 				bind:value={fields.password}
@@ -57,7 +57,7 @@
 
 	<div class="mb-4">
 		<label class="label">
-			<span>Password Confirmation</span>
+			<span>Confirmar Senha</span>
 			<input
 				class="input"
 				bind:value={fields.password_confirmation}
@@ -71,7 +71,7 @@
 	<div class="flex pt-8">
 		<div class="flex-1"></div>
 		<button type="submit" class="btn variant-filled-primary mr-2 text-white" disabled={loading}
-			>Submit</button
+			>Salvar</button
 		>
 	</div>
 </form>

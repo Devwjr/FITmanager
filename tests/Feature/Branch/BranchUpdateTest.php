@@ -14,7 +14,7 @@ class BranchUpdateTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->put('/api/branches/1', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -26,9 +26,9 @@ class BranchUpdateTest extends TestCase
 
         $bearer = $this->getUserAuth();
 
-        $response = $this->put('/api/branches/' . $model->id, [], [
+        $response = $this->put('/api/branches/'.$model->id, [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -40,11 +40,11 @@ class BranchUpdateTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->put('/api/branches/' . $model->id, [
+        $response = $this->put('/api/branches/'.$model->id, [
             'name' => '',
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(422);
@@ -58,7 +58,7 @@ class BranchUpdateTest extends TestCase
             'name' => 'test',
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(404);
@@ -70,14 +70,14 @@ class BranchUpdateTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->put('/api/branches/' . $model->id, [
+        $response = $this->put('/api/branches/'.$model->id, [
             'name' => fake()->name(),
             'num_days' => fake()->numberBetween(1, 10),
             'status' => 'active',
             'description' => fake()->paragraph(1),
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

@@ -42,7 +42,7 @@
 		})
 			.then(() => {
 				toast.trigger({
-					message: 'Successfully updated',
+					message: 'Atualizado com sucesso',
 					background: 'variant-filled-success'
 				});
 				window.dispatchEvent(new CustomEvent('user_subscription'));
@@ -68,14 +68,14 @@
 	<!-- Responsive Container (recommended) -->
 	<form action="" onsubmit={prevent(onSubmit)} class="flex flex-1 flex-col">
 		<ModalHeader>
-			<div class="flex-1 font-bold">Member Subscription</div>
+			<div class="flex-1 font-bold">Assinatura do Aluno</div>
 			<ModalClose onClose={() => modalStore.close()} />
 		</ModalHeader>
 		<ModalBody>
 			<div class="mb-4">
 				<!-- svelte-ignore a11y-label-has-associated-control -->
 				<label class="label">
-					<span>Package</span>
+					<span>Pacote</span>
 					<PackageSelect bind:value={fields.package} />
 				</label>
 			</div>
@@ -91,17 +91,17 @@
 						disabled={loading}
 					>
 						<option value=""></option>
-						<option value="active">Active</option>
-						<option value="inactive">In-Active</option>
-						<option value="cancelled">Cancelled</option>
-						<option value="suspended">Suspended</option>
+						<option value="active">Ativo</option>
+						<option value="inactive">Inativo</option>
+						<option value="cancelled">Cancelado</option>
+						<option value="suspended">Suspenso</option>
 					</select>
 				</label>
 			</div>
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Interval</span>
+					<span>Intervalo (dias)</span>
 					<input
 						class="input"
 						bind:value={fields.interval}
@@ -120,13 +120,13 @@
 					type="button"
 					onclick={() => modalStore.close()}
 					class="variant-filled-error btn text-white"
-					disabled={loading}>Cancel</button
+					disabled={loading}>Cancelar</button
 				>
 				<div class="flex-1"></div>
 				<button
 					type="submit"
 					class="variant-filled-primary btn mr-2 text-white"
-					disabled={loading}>Submit</button
+					disabled={loading}>Salvar</button
 				>
 			</div>
 		</ModalFooter>

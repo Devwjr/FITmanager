@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCycleRequest;
 use App\Http\Requests\UpdateCycleRequest;
 use App\Models\Cycle;
+use Illuminate\Http\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -14,7 +15,7 @@ class CycleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -32,8 +33,7 @@ class CycleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCycleRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(StoreCycleRequest $request)
     {
@@ -50,8 +50,7 @@ class CycleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cycle  $cycle
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Cycle $cycle)
     {
@@ -61,9 +60,7 @@ class CycleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCycleRequest  $request
-     * @param  \App\Models\Cycle  $cycle
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateCycleRequest $request, Cycle $cycle)
     {
@@ -80,8 +77,7 @@ class CycleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cycle  $cycle
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Cycle $cycle)
     {

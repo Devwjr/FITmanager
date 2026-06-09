@@ -25,7 +25,7 @@
 		})
 			.then(() => {
 				toast.trigger({
-					message: 'You have successfully reset your password. Redirecting...',
+					message: 'Senha redefinida com sucesso. Redirecionando...',
 					background: 'variant-filled-success'
 				});
 				setTimeout(() => (window.location.href = '/'), 1000);
@@ -43,14 +43,14 @@
 </script>
 
 <div class="mb-6">
-	<h3 class="h3">Reset Password</h3>
-	<p>Use the form below to reset your password</p>
+	<h3 class="h3">Redefinir Senha</h3>
+	<p>Use o formulário abaixo para redefinir sua senha</p>
 </div>
 
 <form action="" onsubmit={onSubmit}>
 	<div class="mb-6">
 		<label class="label">
-			<span>Password</span>
+			<span>Senha</span>
 			<input
 				class="input"
 				bind:value={fields.password}
@@ -64,7 +64,7 @@
 	</div>
 	<div class="mb-6">
 		<label class="label">
-			<span>Password Confirmation</span>
+			<span>Confirmar Senha</span>
 			<input
 				class="input"
 				bind:value={fields.password_confirmation}
@@ -79,7 +79,7 @@
 	<button
 		type="submit"
 		disabled={loading}
-		class="variant-filled-primary btn w-full font-bold text-white">Reset Password</button
+		class="variant-filled-primary btn w-full font-bold text-white">Redefinir Senha</button
 	>
-	<a href="/login" class="block pt-2 text-center">Back to login </a>
+	<a href="/login" class="block pt-2 text-center">Voltar ao login </a>
 </form>

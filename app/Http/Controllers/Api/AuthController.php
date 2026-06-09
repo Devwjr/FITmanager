@@ -19,7 +19,7 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $this->userAuthService = new UserAuthService();
+        $this->userAuthService = new UserAuthService;
     }
 
     public function register(RegisterRequest $request)
@@ -27,7 +27,7 @@ class AuthController extends Controller
         $this->userAuthService->register($request->email, $request->password, $request->name);
 
         return response()->json([
-            'success' => true
+            'success' => true,
         ], 201);
     }
 
@@ -42,16 +42,15 @@ class AuthController extends Controller
                 'success' => true,
                 'token_type' => 'Bearer',
                 'access_token' => $token,
-                'user' => $user
+                'user' => $user,
             ]);
         } catch (AuthenticationException $ex) {
             return response()->json([
                 'message' => $ex->getMessage(),
-                'success' => false
+                'success' => false,
             ], 401);
         }
     }
-
 
     public function refresh(Request $request)
     {
@@ -71,7 +70,7 @@ class AuthController extends Controller
         $this->userAuthService->logout($request->user());
 
         return response()->json([
-            'success' => true
+            'success' => true,
         ]);
     }
 
@@ -81,7 +80,7 @@ class AuthController extends Controller
 
         return $status === true
             ? response()->json(['success' => true])
-            : response()->json(['message' => 'unable to process request', 'success' => false], 400);
+            : response()->json(['message' => 'não foi possível processar a solicitação', 'success' => false], 400);
     }
 
     public function reset(ResetRequest $request)
@@ -90,19 +89,19 @@ class AuthController extends Controller
 
         return $status === true
             ? response()->json(['success' => true])
-            : response()->json(['message' => 'unable to reset password', 'success' => false], 400);
+            : response()->json(['message' => 'não foi possível redefinir a senha', 'success' => false], 400);
     }
 
     public function verify($id, $hash, Request $request)
     {
-        if (!$request->hasValidSignature()) {
-            return response()->json(["message" => "invalid verification token", "success" => false], 400);
+        if (! $request->hasValidSignature()) {
+            return response()->json(['message' => 'token de verificação inválido', 'success' => false], 400);
         }
 
         $this->userAuthService->verify($id);
 
         return response()->json([
-            'success' => true
+            'success' => true,
         ]);
     }
 
@@ -112,6 +111,6 @@ class AuthController extends Controller
 
         return $status === true
             ? response()->json(['success' => true])
-            : response()->json(['message' => 'user must already been verified', 'success' => false], 400);
+            : response()->json(['message' => 'usuário já foi verificado', 'success' => false], 400);
     }
 }

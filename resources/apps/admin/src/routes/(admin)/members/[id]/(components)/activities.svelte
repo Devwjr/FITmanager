@@ -42,7 +42,7 @@
 
 <div class="flex flex-col">
 	<div class="mb-4 flex items-center">
-		<h3 class="h3 mb-4">Member Activities</h3>
+		<h3 class="h3 mb-4">Atividades do Aluno</h3>
 		<div class="flex-1"></div>
 	</div>
 
@@ -53,8 +53,8 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Description</th>
-					<th>Date</th>
+					<th>Descrição</th>
+					<th>Data</th>
 				</tr>
 			</thead>
 			<tbody>

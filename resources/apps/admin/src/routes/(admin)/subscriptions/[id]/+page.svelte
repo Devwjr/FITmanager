@@ -16,7 +16,7 @@
 		Authorization: getBearerToken()
 	});
 
-	const title = 'Edit Subscription';
+	const title = 'Editar Assinatura';
 
 	let loading = $state(false);
 
@@ -37,7 +37,7 @@
 		})
 			.then(() => {
 				toast.trigger({
-					message: 'Successfully updated',
+					message: 'Atualizado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -90,24 +90,24 @@
 		<!-- Responsive Container (recommended) -->
 		<form action="" onsubmit={prevent(onSubmit)}>
 			<div class="mb-4">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<!-- svelte-ignore a11y_label_has_associated_control -->
 				<label class="label">
-					<span>User</span>
+					<span>Aluno</span>
 					<UserSelect bind:value={fields.user} />
 				</label>
 			</div>
 
 			<div class="mb-4">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<!-- svelte-ignore a11y_label_has_associated_control -->
 				<label class="label">
-					<span>Package</span>
+					<span>Pacote</span>
 					<PackageSelect bind:value={fields.package} />
 				</label>
 			</div>
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Interval</span>
+					<span>Intervalo (dias)</span>
 					<input
 						class="input"
 						bind:value={fields.interval}
@@ -130,9 +130,9 @@
 						disabled={loading}
 					>
 						<option value=""></option>
-						<option value="active">Active</option>
-						<option value="inactive">In-Active</option>
-						<option value="suspended">Suspended</option>
+						<option value="active">Ativo</option>
+						<option value="inactive">Inativo</option>
+						<option value="suspended">Suspenso</option>
 					</select>
 				</label>
 			</div>
@@ -142,13 +142,13 @@
 					type="button"
 					onclick={() => goto('/subscriptions')}
 					class="btn variant-filled-error text-white"
-					disabled={loading}>Cancel</button
+					disabled={loading}>Cancelar</button
 				>
 				<div class="flex-1"></div>
 				<button
 					type="submit"
 					class="btn variant-filled-primary mr-2 text-white"
-					disabled={loading}>Submit</button
+					disabled={loading}>Salvar</button
 				>
 			</div>
 		</form>

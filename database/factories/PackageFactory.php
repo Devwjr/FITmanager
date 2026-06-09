@@ -7,7 +7,7 @@ use App\Models\Service;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Service>
+ * @extends Factory<Service>
  */
 class PackageFactory extends Factory
 {
@@ -22,7 +22,7 @@ class PackageFactory extends Factory
             'cycle_id' => Cycle::factory(),
             'name' => fake()->name(),
             'status' => 'active',
-            'amount' => fake()->numberBetween(1, 100)
+            'amount' => fake()->numberBetween(1, 100),
         ];
     }
 }

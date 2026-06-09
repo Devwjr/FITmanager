@@ -20,7 +20,7 @@
 				{#each item.package.services as item}
 					<li>{item.name}</li>
 				{:else}
-					<li>No service attached to this package.</li>
+					<li>Nenhum serviço vinculado a este pacote.</li>
 				{/each}
 			{/if}
 		</ul>
@@ -29,7 +29,7 @@
 				<FaClock />
 			</span>
 			<div class="flex-1">
-				Valid Until: {moment(item.expires_at).format('LL')}
+				Válido até: {moment(item.expires_at).format('LL')}
 			</div>
 		</div>
 		{#if item.status === 'suspended'}
@@ -38,7 +38,7 @@
 					<FaClock />
 				</span>
 				<div class="flex-1">
-					Suspended At: {moment(item.suspended_at).format('LL')}
+					Suspenso em: {moment(item.suspended_at).format('LL')}
 				</div>
 			</div>
 		{/if}

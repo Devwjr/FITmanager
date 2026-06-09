@@ -13,9 +13,8 @@ class Activity extends Model
     protected $fillable = [
         'entity_id',
         'type',
-        'description'
+        'description',
     ];
-
 
     public function scopeEntity(Builder $query, $entity): Builder
     {

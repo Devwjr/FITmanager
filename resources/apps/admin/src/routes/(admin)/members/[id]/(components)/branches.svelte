@@ -26,7 +26,7 @@
 		api.post(`/users/${user.id}/branches`, { branches: fields.branches.map((v) => v.id) })
 			.then(() => {
 				toast.trigger({
-					message: 'successfully updated',
+					message: 'Atualizado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -59,7 +59,7 @@
 
 <div class="flex flex-col">
 	<div class="mb-4 flex items-center">
-		<h3 class="h3 mb-4">Member Branches</h3>
+		<h3 class="h3 mb-4">Filiais do Aluno</h3>
 		<div class="flex-1"></div>
 	</div>
 
@@ -68,7 +68,7 @@
 		<div class="mb-4">
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label class="label">
-				<span class="mb-4 block">Select Branches</span>
+				<span class="mb-4 block">Selecionar Filiais</span>
 				<BranchSelect bind:value={fields.branches} multiple />
 			</label>
 		</div>
@@ -78,7 +78,7 @@
 			<button
 				type="submit"
 				class="btn variant-filled-primary mr-2 text-white"
-				disabled={loading}>Submit</button
+				disabled={loading}>Salvar</button
 			>
 		</div>
 	</form>

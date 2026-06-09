@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Cycle;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Tests\UserSessionTrait;
@@ -14,7 +13,7 @@ class CycleIndexTest extends TestCase
     public function test_unauthorized()
     {
         $response = $this->get('/api/cycles', [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -26,7 +25,7 @@ class CycleIndexTest extends TestCase
 
         $response = $this->get('/api/cycles', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -38,7 +37,7 @@ class CycleIndexTest extends TestCase
 
         $response = $this->get('/api/cycles', [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

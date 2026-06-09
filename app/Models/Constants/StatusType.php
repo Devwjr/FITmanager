@@ -1,6 +1,6 @@
 <?php
-namespace App\Models\Constants;
 
+namespace App\Models\Constants;
 
 class StatusType
 {

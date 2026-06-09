@@ -1,6 +1,4 @@
 <script>
-	// @ts-nocheck
-
 	import { goto } from '$app/navigation';
 	import { getBearerToken, getErrorMessage, useApi } from '$lib/api';
 	import PackageSelect from '$lib/components/PackageSelect.svelte';
@@ -14,7 +12,7 @@
 		Authorization: getBearerToken()
 	});
 
-	const title = 'New Subscription';
+	const title = 'Nova Assinatura';
 
 	let loading = $state(false);
 
@@ -34,7 +32,7 @@
 			.then(() => {
 				goto('/subscriptions');
 				toast.trigger({
-					message: 'Successfully created',
+					message: 'Criado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -58,27 +56,24 @@
 			<h3 class="h3">{title}</h3>
 			<div class="flex-1"></div>
 		</header>
-		<!-- Responsive Container (recommended) -->
 		<form action="" onsubmit={prevent(onSubmit)}>
 			<div class="mb-4">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
 				<label class="label">
-					<span>User</span>
+					<span>Usuário</span>
 					<UserSelect bind:value={fields.user} />
 				</label>
 			</div>
 
 			<div class="mb-4">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
 				<label class="label">
-					<span>Package</span>
+					<span>Pacote</span>
 					<PackageSelect bind:value={fields.package} />
 				</label>
 			</div>
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Interval</span>
+					<span>Intervalo</span>
 					<input
 						class="input"
 						bind:value={fields.interval}
@@ -96,13 +91,13 @@
 					type="button"
 					onclick={() => goto('/subscriptions')}
 					class="btn variant-filled-error text-white"
-					disabled={loading}>Cancel</button
+					disabled={loading}>Cancelar</button
 				>
 				<div class="flex-1"></div>
 				<button
 					type="submit"
 					class="btn variant-filled-primary mr-2 text-white"
-					disabled={loading}>Submit</button
+					disabled={loading}>Salvar</button
 				>
 			</div>
 		</form>

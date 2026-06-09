@@ -10,7 +10,7 @@
 		Authorization: getBearerToken()
 	});
 
-	const title = 'Add Service';
+	const title = 'Novo Serviço';
 
 	let loading = $state(false);
 
@@ -26,7 +26,7 @@
 			.then(() => {
 				goto('/services');
 				toast.trigger({
-					message: 'Successfully created',
+					message: 'Criado com sucesso',
 					background: 'variant-filled-success'
 				});
 			})
@@ -54,7 +54,7 @@
 		<form action="" onsubmit={prevent(onSubmit)}>
 			<div class="mb-4">
 				<label class="label">
-					<span>Name</span>
+					<span>Nome</span>
 					<input
 						class="input"
 						bind:value={fields.name}
@@ -77,15 +77,15 @@
 						disabled={loading}
 					>
 						<option value=""></option>
-						<option value="active">Active</option>
-						<option value="inactive">In-Active</option>
+						<option value="active">Ativo</option>
+						<option value="inactive">Inativo</option>
 					</select>
 				</label>
 			</div>
 
 			<div class="mb-4">
 				<label class="label">
-					<span>Description</span>
+					<span>Descrição</span>
 					<textarea
 						class="textarea"
 						rows="4"
@@ -93,7 +93,7 @@
 						name="description"
 						required
 						disabled={loading}
-					/>
+					></textarea>
 				</label>
 			</div>
 
@@ -102,13 +102,13 @@
 					type="button"
 					onclick={() => goto('/services')}
 					class="btn variant-filled-error text-white"
-					disabled={loading}>Cancel</button
+					disabled={loading}>Cancelar</button
 				>
 				<div class="flex-1"></div>
 				<button
 					type="submit"
 					class="btn variant-filled-primary mr-2 text-white"
-					disabled={loading}>Submit</button
+					disabled={loading}>Salvar</button
 				>
 			</div>
 		</form>

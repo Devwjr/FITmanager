@@ -20,7 +20,7 @@
 
 	const toast = useToast();
 
-	const title = 'Member Settings';
+	const title = 'Configurações do Aluno';
 
 	let loading = $state(false);
 
@@ -74,35 +74,35 @@
 						<a
 							class={active === 'profile' ? 'active' : ''}
 							onclick={onNavItemClicked('profile')}
-							href="/">Profile</a
+							href="/">Perfil</a
 						>
 					</li>
 					<li>
 						<a
 							class={active === 'subscriptions' ? 'active' : ''}
 							onclick={onNavItemClicked('subscriptions')}
-							href="/">Subscriptions</a
+							href="/">Assinaturas</a
 						>
 					</li>
 					<li>
 						<a
 							class={active === 'branches' ? 'active' : ''}
 							onclick={onNavItemClicked('branches')}
-							href="/">Branches</a
+							href="/">Filiais</a
 						>
 					</li>
 					<li>
 						<a
 							class={active === 'activities' ? 'active' : ''}
 							onclick={onNavItemClicked('activities')}
-							href="/">Activities</a
+							href="/">Atividades</a
 						>
 					</li>
 					<li>
 						<a
 							class={active === 'security' ? 'active' : ''}
 							onclick={onNavItemClicked('security')}
-							href="/">Security and Privacy</a
+							href="/">Segurança e Privacidade</a
 						>
 					</li>
 				</ul>
@@ -132,7 +132,7 @@
 	</div>
 </div>
 
-< lang="postcss">
+<style lang="postcss">
 	.user-sidebar {
 		@apply min-h-full w-72 border-r;
 	}
@@ -142,10 +142,10 @@
 	}
 
 	.user-nav a.active {
-		@apply bg-blue-950 text-white;
+		@apply bg-amber-600 text-white;
 	}
 
 	.user-nav a:hover {
 		@apply text-white;
 	}
-/style>
+</style>

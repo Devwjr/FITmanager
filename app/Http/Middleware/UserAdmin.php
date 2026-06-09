@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Dave
@@ -7,7 +8,6 @@
  */
 
 namespace App\Http\Middleware;
-
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
@@ -18,8 +18,8 @@ class UserAdmin
     {
         $user = $request->user();
 
-        if (!$user->is_admin) {
-            throw new AuthorizationException("You are not allowed to access resource.");
+        if (! $user->is_admin) {
+            throw new AuthorizationException('Você não tem permissão para acessar este recurso.');
         }
 
         return $next($request);

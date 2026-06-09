@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Package extends Model
 {
-    use HasFactory, HaveServices, HasCycle, HaveSubscriptions, SoftDeletes;
+    use HasCycle, HasFactory, HaveServices, HaveSubscriptions, SoftDeletes;
 
     protected $casts = [
         'cycle_id' => 'int',
@@ -22,6 +22,6 @@ class Package extends Model
         'cycle_id',
         'amount',
         'name',
-        'status'
+        'status',
     ];
 }

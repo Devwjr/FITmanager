@@ -27,7 +27,7 @@ class StoreSubscriptionRequest extends FormRequest
             'package_id' => 'required|exists:packages,id',
             'user_id' => 'required|exists:users,id',
             'interval' => 'required|numeric|min:1',
-            'status' => 'in:active,inactive,expired,suspended'
+            'status' => 'in:active,inactive,expired,suspended',
         ];
     }
 }

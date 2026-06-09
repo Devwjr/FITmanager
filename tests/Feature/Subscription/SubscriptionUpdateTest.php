@@ -14,7 +14,7 @@ class SubscriptionUpdateTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->put('/api/subscriptions/1', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -26,9 +26,9 @@ class SubscriptionUpdateTest extends TestCase
 
         $bearer = $this->getUserAuth();
 
-        $response = $this->put('/api/subscriptions/' . $model->id, [], [
+        $response = $this->put('/api/subscriptions/'.$model->id, [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -40,11 +40,11 @@ class SubscriptionUpdateTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->put('/api/subscriptions/' . $model->id, [
-            'status' => ''
+        $response = $this->put('/api/subscriptions/'.$model->id, [
+            'status' => '',
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(422);
@@ -58,7 +58,7 @@ class SubscriptionUpdateTest extends TestCase
 
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(404);
@@ -70,11 +70,11 @@ class SubscriptionUpdateTest extends TestCase
 
         $bearer = $this->getAdminAuth();
 
-        $response = $this->put('/api/subscriptions/' . $model->id, [
-            'status' => 'active'
+        $response = $this->put('/api/subscriptions/'.$model->id, [
+            'status' => 'active',
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

@@ -13,7 +13,7 @@ class CycleStoreTest extends TestCase
     public function test_user_is_unauthorized()
     {
         $response = $this->post('/api/cycles', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(401);
@@ -25,7 +25,7 @@ class CycleStoreTest extends TestCase
 
         $response = $this->post('/api/cycles', [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(403);
@@ -37,7 +37,7 @@ class CycleStoreTest extends TestCase
 
         $response = $this->post('/api/cycles', [], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(422);
@@ -54,7 +54,7 @@ class CycleStoreTest extends TestCase
             'description' => fake()->paragraph(1),
         ], [
             'Accept' => 'application/json',
-            'Authorization' => $bearer
+            'Authorization' => $bearer,
         ]);
 
         $response->assertStatus(200);

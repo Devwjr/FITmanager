@@ -4,7 +4,6 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
 class ResendTest extends TestCase
@@ -19,7 +18,7 @@ class ResendTest extends TestCase
     public function test_validation_error()
     {
         $response = $this->post('/api/auth/resend', [], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(422);
@@ -28,7 +27,7 @@ class ResendTest extends TestCase
     public function test_account_does_not_exist()
     {
         $response = $this->post('/api/auth/resend', ['email' => 'noexist@email.com'], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(404);
@@ -41,7 +40,7 @@ class ResendTest extends TestCase
         $user->markEmailAsVerified();
 
         $response = $this->post('/api/auth/resend', ['email' => $user->email], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(400);
@@ -52,7 +51,7 @@ class ResendTest extends TestCase
         $user = User::factory()->unverified()->create();
 
         $response = $this->post('/api/auth/resend', ['email' => $user->email], [
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ]);
 
         $response->assertStatus(200);

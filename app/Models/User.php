@@ -29,7 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_admin',
         'status',
         'account_number',
-        'avatar'
+        'avatar',
     ];
 
     /**
@@ -69,14 +69,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         static::created(function (User $user) {
             $user->account_number = User::generateAccountNumber($user->id);
-            $user->profile()->save(new Profile());
+            $user->profile()->save(new Profile);
             $user->save();
         });
     }
 
     public static function generateAccountNumber(int $input): string
     {
-        return str_pad($input, 12, "0", STR_PAD_LEFT);
+        return str_pad($input, 12, '0', STR_PAD_LEFT);
     }
 
     public function getPersonalAccessToken()
@@ -91,8 +91,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getInitialAttribute()
     {
         $words = explode(' ', $this->name);
+
         return mb_strtoupper(
-            mb_substr($words[0], 0, 1, 'UTF-8') .
+            mb_substr($words[0], 0, 1, 'UTF-8').
             mb_substr(end($words), 0, 1, 'UTF-8'),
             'UTF-8'
         );
