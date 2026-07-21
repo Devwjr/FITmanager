@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceSeeder::class);
         $this->call(ActivitySeeder::class);
         $this->call(PackageSeeder::class);
+        $this->call(SubscriptionSeeder::class);
 
         Model::reguard();
         DB::statement('SET foreign_key_checks=1');

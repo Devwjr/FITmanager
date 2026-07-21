@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { getBearerToken, getErrorMessage, useApi } from '$lib/api';
+import { getBearerToken, useApi } from '$lib/api';
 import { ApiException } from '$lib/exceptions';
 import { getContext, setContext } from 'svelte';
 

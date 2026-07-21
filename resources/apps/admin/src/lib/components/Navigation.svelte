@@ -10,6 +10,8 @@
 	import Cycles from 'svelte-icons/fa/FaCalendarPlus.svelte';
 	import Logout from 'svelte-icons/fa/FaSignOutAlt.svelte';
 	import Branches from 'svelte-icons/fa/FaBuilding.svelte';
+	import Account from 'svelte-icons/fa/FaUserCog.svelte';
+	import Settings from 'svelte-icons/fa/FaCog.svelte';
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
@@ -74,6 +76,16 @@
 				path: '/cycles',
 				name: 'Ciclos',
 				icon: Cycles
+			},
+			{
+				path: '/account',
+				name: 'Minha Conta',
+				icon: Account
+			},
+			{
+				path: '/settings',
+				name: 'Configurações',
+				icon: Settings
 			},
 			{
 				path: '/logout',

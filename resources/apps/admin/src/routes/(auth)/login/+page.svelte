@@ -76,4 +76,5 @@
         class="variant-filled-primary btn w-full font-bold text-white">Entrar</button
     >
     <a href="/forgot" class="block pt-2 text-center">Esqueceu a senha?</a>
+    <a href="/register" class="block pt-2 text-center">Não tem conta? Cadastre-se</a>
 </form>

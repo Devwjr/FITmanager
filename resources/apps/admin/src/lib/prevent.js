@@ -1,7 +1,7 @@
-// @ts-nocheck
+/** @param {Event} event */
 export const prevent = (callback) => {
-    return event => {
+    return (/** @type {Event} */ event) => {
         event.preventDefault();
-        callback(event)
-    }
-}
+        callback(event);
+    };
+};

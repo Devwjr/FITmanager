@@ -17,9 +17,13 @@ export const getErrorMessage = (
 
 export const getBearerToken = () => {
 	if (browser) {
-		const token = document.getElementById('access_token');
-		const value = token ? token.getAttribute('content') : undefined;
-		return value ? `Bearer ${value}` : undefined;
+		const cookies = document.cookie.split(';');
+		for (const cookie of cookies) {
+			const [name, value] = cookie.trim().split('=');
+			if (name === 'token' && value) {
+				return `Bearer ${decodeURIComponent(value)}`;
+			}
+		}
 	}
 	return undefined;
 };
