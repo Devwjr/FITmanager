@@ -33,7 +33,7 @@ class LoginTest extends TestCase
             'Accept' => 'application/json',
         ]);
 
-        $response->assertStatus(422);
+        $response->assertStatus(401);
     }
 
     public function test_invalid_login_credentials()

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,20 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::group(['middleware' => ['admin']], function () {
+        Route::get('me', function (Request $request) {
+            return $request->user()->load('profile');
+        });
+        Route::get('training/exercises', 'TrainingController@exercises');
+        Route::post('training/exercises', 'TrainingController@saveExercise');
+        Route::put('training/exercises/{exercise}', 'TrainingController@saveExercise');
+        Route::get('training/students', 'TrainingController@students');
+        Route::get('training/{user}/workouts', 'TrainingController@workouts');
+        Route::post('training/{user}/workouts', 'TrainingController@saveWorkout');
+        Route::put('training/{user}/workouts/{workout}', 'TrainingController@saveWorkout');
+        Route::delete('training/{user}/workouts/{workout}', 'TrainingController@deleteWorkout');
+        Route::post('training/{user}/sessions', 'TrainingController@saveSession');
+        Route::delete('training/{user}/sessions/{session}', 'TrainingController@deleteSession');
+        Route::get('training/{user}/progress', 'TrainingController@progress');
         Route::apiResource('cycles', 'CycleController');
         Route::apiResource('services', 'ServiceController');
         Route::apiResource('branches', 'BranchController');

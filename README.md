@@ -1,104 +1,67 @@
-## FITmanager - Sistema de Gerenciamento de Academia
+# EduFit
 
-Sistema completo de gerenciamento de academia, desenvolvido com Laravel e SvelteKit. Com recursos poderosos que permitem gerenciar facilmente sua academia ou centro de fitness.
+Gestão de alunos e acompanhamento de treinamento com Laravel e SvelteKit.
 
-## Funcionalidades
+- Biblioteca de exercícios com grupo muscular e orientações.
+- Fichas por aluno com séries, repetições, carga e frequência semanal.
+- Volume planejado por sessão e por semana.
+- Registro de sessões realizadas, independente das alterações futuras na ficha.
+- Evolução semanal (segunda a domingo) e mensal, com comparação percentual ao período anterior.
+- Gráfico de volume por sessão e modelos padrão editáveis (full body, upper/lower e push/pull/legs).
+- Séries por grupo muscular, histórico e exclusão de registros incorretos.
+- Gestão de alunos, assinaturas e demais recursos já existentes.
 
-1. **Pacotes** - criar pacotes personalizados para alunos.
-2. **Alunos** - sistema completo de gerenciamento de usuários.
-3. **Serviços e ciclos de cobrança** - anual, semanal, diário, fixo etc.
-4. **Presença** - acompanha quem está atualmente na academia.
-5. **Atividades** - registros do sistema.
-6. **Gerenciamento de assinaturas/mensalidades.**
-7. **Filiais** - caso sua academia tenha mais de uma unidade.
+O volume em kg corresponde a séries × repetições × carga externa. Não é uma medida isolada de evolução física. Para exercícios sem carga externa, use 0 kg; as séries e repetições continuam contabilizadas. Para séries com cargas diferentes, repita o exercício em linhas separadas. Sem valor no período anterior, a porcentagem é exibida como “Sem base de comparação”.
 
-## Frontend
+## Executar localmente
 
-O frontend é desenvolvido com **SvelteKit** para uma experiência rápida e moderna.
-
-## Tecnologias
-
-- **Backend:** Laravel 9 (PHP 8.0+), MySQL 8.0, Redis, Sanctum Auth
-- **Frontend:** SvelteKit 2, Svelte 5, Skeleton UI, Tailwind CSS
-- **Infra:** Docker Compose
-
-## Instalação
-
-### 1. Configuração da API (Backend)
+Requisitos: PHP 8.4 com SQLite, mbstring e XML; Composer; Node 20.19+ e npm. O lock atual de dependências PHP exige PHP 8.4.
 
 ```bash
-git clone https://github.com/Devwjr/FITmanager.git project
-cd project
 composer install
-cp .env.example .env # Edite este arquivo conforme suas configurações
+cp .env.example .env
 php artisan key:generate
-php artisan storage:link
-php artisan migrate
-php artisan db:seed
+```
+
+Para usar SQLite, crie `database/database.sqlite` e configure no `.env`:
+
+```dotenv
+DB_CONNECTION=sqlite
+DB_DATABASE=/caminho/absoluto/do/projeto/database/database.sqlite
+MAIL_MAILER=log
+```
+
+```bash
+php artisan migrate --seed
 php artisan serve
 ```
 
-### 2. Configuração do Frontend
+Em outro terminal:
 
 ```bash
 cd resources/apps/admin
-cp .env.example .env # Edite este arquivo conforme suas configurações
-npm install
+cp .env.example .env
+npm ci
 npm run dev
 ```
 
-### 3. Docker (Opcional)
+Abra http://localhost:5173. Login: **edu**, senha inicial: **edu12345**. O seed cria o administrador sem apagar alunos ou redefinir uma senha já alterada. Em um banco existente, execute `php artisan migrate` e `php artisan db:seed --class=AdminSeeder`.
+
+Cadastre alunos em **Alunos → Novo Aluno**, depois abra **Treinos e evolução**. Cadastre exercícios, selecione o aluno e monte uma ficha. Use **Registrar execução**, ajuste os valores realmente realizados e salve a sessão. Selecione semana/mês e uma data para consultar o histórico. A comparação do período atual ainda em andamento pode ter menos dias que o anterior.
+
+Altere a senha inicial em **Minha Conta → Segurança** antes de compartilhar o endereço público.
+
+Os modelos padrão são pontos de partida editáveis, baseados na recomendação pública da [OMS de incluir fortalecimento dos principais grupos musculares em pelo menos dois dias por semana](https://www.who.int/europe/news-room/fact-sheets/item/physical-activity). Eles não são prescrição: revise exercícios, carga, frequência e progressão para cada aluno.
+
+## Hospedagem gratuita
+
+Siga [o guia Render + Neon](docs/HOSPEDAGEM.md). Inclui configurações dos dois serviços, banco persistente e limitações do free tier.
+
+## Verificação
 
 ```bash
-docker-compose up -d
-```
-
-Isso irá iniciar:
-- MySQL na porta 3306
-- Redis na porta 6379
-- MailHog (para testes de email) na porta 8025
-
-## Testes
-
-Para contribuir ou testar funcionalidades:
-
-```bash
-# Testes Backend (PHPUnit)
-./vendor/bin/phpunit
-
-# Testes Frontend (Playwright + Vitest)
+vendor/bin/phpunit --filter TrainingTest
 cd resources/apps/admin
-npm run test
+npm run check
+npm run build
 ```
-
-## Rotas
-
-Todas as rotas podem ser conferidas acessando a documentação interna do sistema ou via:
-
-```bash
-php artisan route:list
-```
-
-## Estrutura do Projeto
-
-```
-FITmanager/
-├── app/                    # Código PHP (Models, Controllers, Services)
-├── config/                 # Configurações do Laravel
-├── database/               # Migrations, Seeders, Factories
-├── resources/apps/admin/   # Frontend SvelteKit
-│   ├── src/
-│   │   ├── lib/           # Componentes, Stores, Utilitários
-│   │   └── routes/        # Páginas (Admin + Auth)
-│   └── tests/             # Testes Frontend
-├── routes/                 # Rotas da API
-└── tests/                  # Testes Backend
-```
-
-## Contribuição
-
-Este projeto foi desenvolvido para fins de estudo e uso próprio. Se você tiver sugestões ou melhorias, sinta-se à vontade para contribuir ou abrir uma issue.
-
-## Licença
-
-Este software é fornecido "como está", sem garantias de qualquer tipo. Fique à vontade para usar, modificar e distribuir conforme suas necessidades.

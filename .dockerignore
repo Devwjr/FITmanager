@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+!.env.example
+vendor
+node_modules
+resources/apps/admin/node_modules
+resources/apps/admin/.svelte-kit
+resources/apps/admin/build
+storage/logs/*
+database/*.sqlite

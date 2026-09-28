@@ -1,3 +1,4 @@
+<a href="/training" class="btn variant-filled-primary m-4">Montar treinos e acompanhar evolução →</a>
 <script>
 	// @ts-nocheck
 	import StatisticsCard from '$lib/components/StatisticsCard.svelte';

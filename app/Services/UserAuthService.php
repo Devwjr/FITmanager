@@ -25,13 +25,14 @@ class UserAuthService
 
     public function login(string $email, string $password): string
     {
-        $credentials = ['email' => $email, 'password' => $password];
+        $field = str_contains($email, '@') ? 'email' : 'username';
+        $credentials = [$field => $email, 'password' => $password];
 
         if (! auth()->attempt($credentials)) {
             throw new AuthenticationException('credenciais de login inválidas');
         }
 
-        $user = User::where('email', $email)->firstOrFail();
+        $user = User::where($field, $email)->firstOrFail();
 
         return $user->getPersonalAccessToken();
     }

@@ -39,7 +39,7 @@
 	const loadUser = async () => {
 		loading = true;
 		try {
-			const response = await api.get('/users/1');
+			const response = await api.get('/me');
 			user = response.data;
 			profileFields = {
 				name: user.name || '',

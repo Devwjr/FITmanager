@@ -38,6 +38,9 @@
 				icon: Dashboard
 			},
 			{
+				path: '/training', name: 'Treinos e evolução', icon: Activities
+			},
+			{
 				path: '/activities',
 				name: 'Atividades',
 				icon: Activities

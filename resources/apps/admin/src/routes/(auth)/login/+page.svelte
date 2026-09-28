@@ -14,6 +14,7 @@
     const onSubmit = (event) => {
         event.preventDefault();
         if (loading) return;
+        loading = true;
         axios
             .post('/login', fields)
             .then(() => {
@@ -36,21 +37,21 @@
 </script>
 
 <div class="mb-6">
-    <h3 class="h3">Acesso à Conta</h3>
+    <h3 class="h3">EduFit · Acesso à Conta</h3>
     <p>Faça login para começar</p>
 </div>
 
 <form action="" onsubmit={onSubmit}>
     <div class="mb-4">
         <label class="label">
-            <span>Email</span>
+            <span>Usuário ou email</span>
             <input
                 class="input"
                 bind:value={fields.email}
                 name="email"
-                type="email"
+                type="text"
                 disabled={loading}
-                placeholder="seu@email.com"
+                placeholder="Seu usuário ou email"
                 required
             />
         </label>

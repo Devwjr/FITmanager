@@ -2,6 +2,8 @@ import { browser } from '$app/environment';
 import { PUBLIC_API_URL } from '$env/static/public';
 
 import axios from 'axios';
+import { get } from 'svelte/store';
+import { page } from '$app/stores';
 
 export const getErrorMessage = (
 	/** @type {{ message: any; response: { data: { message: any; }; }; }} */ error
@@ -17,6 +19,8 @@ export const getErrorMessage = (
 
 export const getBearerToken = () => {
 	if (browser) {
+        const token = get(page).data.token;
+        if (token) return `Bearer ${token}`;
 		const cookies = document.cookie.split(';');
 		for (const cookie of cookies) {
 			const [name, value] = cookie.trim().split('=');

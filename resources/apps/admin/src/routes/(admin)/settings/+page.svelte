@@ -33,12 +33,12 @@
 	];
 
 	const loadSettings = () => {
-		const saved = localStorage.getItem('fitmanager_settings');
+		const saved = localStorage.getItem('edufit_settings');
 		if (saved) {
 			settings = { ...settings, ...JSON.parse(saved) };
 		} else {
-			settings.site_name = 'FITmanager';
-			settings.site_email = 'admin@fitmanager.com';
+			settings.site_name = 'EduFit';
+			settings.site_email = 'admin@edufit.com';
 			settings.site_timezone = 'America/Sao_Paulo';
 		}
 	};
@@ -48,7 +48,7 @@
 		loading = true;
 
 		try {
-			localStorage.setItem('fitmanager_settings', JSON.stringify(settings));
+			localStorage.setItem('edufit_settings', JSON.stringify(settings));
 			toast.trigger({
 				message: 'Configurações salvas com sucesso',
 				background: 'variant-filled-success'
@@ -104,7 +104,7 @@
 						type="email"
 						required
 						disabled={loading}
-						placeholder="admin@fitmanager.com"
+						placeholder="admin@edufit.com"
 					/>
 				</label>
 			</div>
