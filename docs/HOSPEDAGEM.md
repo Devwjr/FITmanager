@@ -1,6 +1,6 @@
 # Hospedar o EduFit no free tier
 
-Arquitetura: dois Web Services Docker no Render (API Laravel e painel SvelteKit), com PostgreSQL no Neon. Os Dockerfiles já estão no projeto. Você precisa criar suas contas e conectar seu repositório; nenhum serviço foi publicado automaticamente.
+Arquitetura: dois Web Services Docker no Render (API Laravel e painel SvelteKit), com PostgreSQL no Neon. Os Dockerfiles e um Blueprint `render.yaml` já estão no projeto. Você precisa criar suas contas e conectar seu repositório; nenhum serviço foi publicado automaticamente.
 
 ## 1. Envie o código para seu GitHub
 
@@ -14,6 +14,8 @@ Envie os arquivos versionados do projeto para um repositório seu. Não envie `.
 4. Confira os limites vigentes do [Neon Free](https://neon.com/pricing). O plano possui cotas de armazenamento e computação; não significa capacidade ilimitada.
 
 ## 3. API no Render
+
+Você pode usar o fluxo manual abaixo ou, no Render, escolher **New → Blueprint** e apontar para `render.yaml`. O Blueprint cria os dois serviços. Quando o Render pedir a variável secreta `DATABASE_URL`, cole a URL do Neon; não a coloque no GitHub.
 
 1. Crie **New → Web Service**, conecte o repositório e selecione **Docker**.
 2. Nome sugerido: `edufit-api`; Root Directory vazio; Dockerfile Path `./Dockerfile`; instância **Free**.

@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: edufit-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_NAME
+        value: EduFit
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_URL
+        value: https://edufit-api.onrender.com
+      - key: SPA_URL
+        value: https://edufit-painel.onrender.com
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DATABASE_URL
+        sync: false
+      - key: CACHE_DRIVER
+        value: file
+      - key: SESSION_DRIVER
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: MAIL_MAILER
+        value: log
+
+  - type: web
+    name: edufit-painel
+    runtime: docker
+    plan: free
+    rootDir: resources/apps/admin
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PUBLIC_API_URL
+        value: https://edufit-api.onrender.com
+      - key: ORIGIN
+        value: https://edufit-painel.onrender.com
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
